@@ -22,11 +22,11 @@ func (t *Threshold) Check(value int) {
 }
 
 func (t *Threshold) indexOfMaxReachedThreshold(value int) int {
-	index := -1
-	for i := 0; i < len(t.thresholds) && value >= t.thresholds[i]; i++ {
-		index = i
+	i := sort.SearchInts(t.thresholds, value)
+	if i == len(t.thresholds) || t.thresholds[i] != value {
+		i--
 	}
-	return index
+	return i
 }
 
 // NewThreshold returns a new instance of Threshold.

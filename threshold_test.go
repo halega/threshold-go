@@ -10,7 +10,7 @@ func TestAlertWhenReachedThreshold(t *testing.T) {
 			t.Error("Expected alert threshold is", 10, "but was", threshold)
 		}
 	})
-	alerter.Check(10)
+	alerter.Check(11)
 	if !alerted {
 		t.Error("Expected an alert but there wasn't any")
 	}
